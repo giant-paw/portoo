@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Proyek Sederhana</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 230, 230, 0.1);
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200">
+
+    <div id="app" class="container mx-auto p-4 sm:p-8">
+
+        <main id="portfolio-grid-section">
+            <header class="text-center mb-12">
+                <h1 class="text-4xl sm:text-5xl font-bold text-white">Portofolio Proyek</h1>
+                <p class="text-lg text-gray-400 mt-2">Kumpulan proyek yang pernah saya kerjakan.</p>
+            </header>
+            <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                </div>
+        </main>
+
+        <section id="project-detail-section" class="hidden">
+             <div class="max-w-4xl mx-auto fade-in">
+                <button id="back-button" class="mb-8 bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded-lg inline-flex items-center transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                    Kembali ke Portofolio
+                </button>
+                <div class="bg-gray-800 p-8 rounded-xl shadow-2xl">
+                    <h2 id="detail-title" class="text-3xl sm:text-4xl font-bold text-white mb-2"></h2>
+                    <p id="detail-creator" class="text-md text-cyan-400 mb-6"></p>
+                    <p id="detail-description" class="text-gray-300 mb-8"></p>
+                    
+                    <h3 class="text-2xl font-bold text-white mb-4 border-b-2 border-cyan-500 pb-2">Screenshot Proyek</h3>
+                    <div id="detail-gallery" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        const projects = [
+            {
+                id: 1,
+                title: 'Website MI Muhammadiyah Ngasem',
+                creator: 'Giant Prakoso',
+                description: 'Website yang di bangun dengan laravel yang bertujuan untuk digitalisasi sekolah .',
+                images: [
+                    'mi.png',
+                    'https://placehold.co/600x400/0F172A/E0E7FF?text=Deteksi+Gestur',
+                    'https://placehold.co/600x400/0F172A/E0E7FF?text=Mode+Latihan',
+                    'https://placehold.co/600x400/0F172A/E0E7FF?text=Halaman+Skor'
+                ]
+            },
+            {
+                id: 2,
+                title: 'Website Dusun Sembuku',
+                creator: 'Muhammad Ilham Cahyadi',
+                description: 'Website pendataan masyarakat di dusun sembuku di gunakan pada project KKN 2025',
+                images: [
+                    'sem1.png',
+                    'sem2.png',
+                    'sem3.png',
+                    'sem4.png'
+                ]
+            },
+            {
+                id: 3,
+                title: 'Design Website JA Logistik',
+                creator: 'Muhammad Ilham Cahyadi',
+                description: 'Design UI/UX untuk sebuah website logistik ',
+                images: [
+        
+                    'page1.png',
+                    'page2.png',
+                    'page3.png',
+                    'page4.png'
+                ]
+            },
+             {
+                id: 4,
+                title: 'Website Qalby - Quran, Asmaul Husna, Doa',
+                creator: 'Giant Prakoso, M. Ilham Cahyadi',
+                description: 'Project pembuatan website al-quran',
+                images: [
+                    'q1.png',
+                    'q2.png',
+                    'q3.png',
+                    'q4.png',
+                    'q5.png',
+                    'q6.png',
+                    'q7.png',
+                ]
+            },
+
+            {
+                id: 5,
+                title: 'Gesturku Alfabet - Aplikasi Pembelajaran Bahasa Isyarat',
+                creator: 'Giant Prakoso',
+                description: 'Aplikasi pembahasan isyarat mobile terintegrasi AI',
+                images: [
+                    'g1.png',
+                    'ga.png',
+                    'g2.png',
+                    'g3.png',
+                    'g4.png',
+                    'g5.png',
+                    'g7.png',
+                    'g8.png',
+                ]
+            },
+
+            {
+                id: 6,
+                title: 'Manggoes Cake',
+                creator: 'Azzam Hafidh aflah , Giant Prakoso , Muhammad Ilham Cahyadi',
+                description: 'Project tugas kuliah membuat website dengan laravel',
+                images: [
+                    'm1.png',
+                    'm2.png',
+                    'm3.png',
+                    'Dashboard.png'
+                ]
+            }
+            
+
+        ];
+
+        const portfolioGrid = document.getElementById('portfolio-grid');
+        const portfolioSection = document.getElementById('portfolio-grid-section');
+        const detailSection = document.getElementById('project-detail-section');
+        const backButton = document.getElementById('back-button');
+
+        const detailTitle = document.getElementById('detail-title');
+        const detailCreator = document.getElementById('detail-creator');
+        const detailDescription = document.getElementById('detail-description');
+        const detailGallery = document.getElementById('detail-gallery');
+
+
+        function renderPortfolio() {
+            portfolioGrid.innerHTML = ''; 
+            projects.forEach(project => {
+                const card = document.createElement('div');
+                card.className = 'project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg cursor-pointer flex flex-col justify-between fade-in';
+                card.dataset.id = project.id;
+
+                card.innerHTML = `
+                    <img src="${project.images[0]}" alt="Pratinjau ${project.title}" class="w-full h-48 object-cover">
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold text-white">${project.title}</h3>
+                        <p class="text-cyan-400 mt-1 text-sm">oleh ${project.creator}</p>
+                    </div>
+                    <div class="px-6 pb-4 text-right">
+                        <span class="text-gray-400 text-sm">Lihat Detail &rarr;</span>
+                    </div>
+                `;
+                portfolioGrid.appendChild(card);
+            });
+        }
+
+        
+        function showProjectDetail(projectId) {
+            const project = projects.find(p => p.id == projectId);
+            if (!project) return;
+
+            detailTitle.textContent = project.title;
+            detailCreator.textContent = `oleh ${project.creator}`;
+            detailDescription.textContent = project.description;
+            
+            detailGallery.innerHTML = '';
+            project.images.forEach(imgUrl => {
+                const imgWrapper = document.createElement('div');
+                imgWrapper.innerHTML = `
+                    <img src="${imgUrl}" alt="Screenshot dari ${project.title}" class="rounded-lg shadow-md w-full h-auto object-cover">
+                `;
+                detailGallery.appendChild(imgWrapper);
+            });
+
+            portfolioSection.classList.add('hidden');
+            detailSection.classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        
+        function showPortfolioGrid() {
+            detailSection.classList.add('hidden');
+            portfolioSection.classList.remove('hidden');
+        }
+
+
+        portfolioGrid.addEventListener('click', (event) => {
+            const card = event.target.closest('.project-card');
+            if (card) {
+                const projectId = card.dataset.id;
+                showProjectDetail(projectId);
+            }
+        });
+
+        backButton.addEventListener('click', showPortfolioGrid);
+
+
+        document.addEventListener('DOMContentLoaded', renderPortfolio);
+
+    </script>
+</body>
+</html>
+
+
